@@ -1,0 +1,15 @@
+{
+  "D-001": {
+    "decision": "Do not launch a new human pilot as the next action.",
+    "instead": ["EXP-001 formal mapping (done)", "EXP-002 seek Nelson raw data", "then AIF-framed replication/extension pilot"],
+    "date": "2026-09-28"
+  },
+  "D-002": {
+    "decision": "Treat Nelson 2010 E3C1 as structural analogue, not identity.",
+    "date": "2026-09-28"
+  },
+  "D-003": {
+    "decision": "Rewrite novelty language in brief, preprint, and Wave-1 letters before any send.",
+    "date": "2026-09-28"
+  }
+}

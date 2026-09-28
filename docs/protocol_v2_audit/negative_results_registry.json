@@ -1,0 +1,11 @@
+{
+  "N-001": {
+    "result": "v6 design-class novelty weakened by Nelson et al. 2010 Condition 1.",
+    "keep_visible": true
+  },
+  "N-002": {
+    "result": "Close human cell showed 12/22 = 55% preference for higher information gain.",
+    "keep_visible": true,
+    "caution": "Small N; Wilson CI is wide; tasks are not identical."
+  }
+}

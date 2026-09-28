@@ -1,0 +1,28 @@
+{
+  "C-001": {
+    "claim": "Generic information seeking uniquely supports Active Inference.",
+    "status": "contradicted",
+    "evidence": ["Da Costa et al. 2020 EFE/OED link", "Russo & Van Roy 2014 IDS", "Nelson 2005 / Nelson et al. 2010"]
+  },
+  "C-002": {
+    "claim": "v6 matched asymmetric-channel construction is historically new as a design class.",
+    "status": "substantially_weakened",
+    "evidence": ["Nelson et al. 2010 Experiment 3 Condition 1: same prior, same PG, different IG"],
+    "note": "v6 task geometry is not identical; design-class novelty is not supported."
+  },
+  "C-003": {
+    "claim": "No relevant human test exists.",
+    "status": "contradicted",
+    "evidence": ["Nelson et al. 2010 human Experiment 3 Condition 1, 12/22 preferred higher-IG feature"]
+  },
+  "C-004": {
+    "claim": "Exact-MI behavior would prove AIF.",
+    "status": "contradicted",
+    "evidence": ["v7 same-objective equivalence", "OED information-gain utility predates AIF"]
+  },
+  "C-005": {
+    "claim": "Project remains valuable as an AIF-specific extension/replication of older OED work.",
+    "status": "plausible",
+    "evidence": ["v1-v7 adversarial sequence", "explicit EFE reduction", "v7 interpretation boundary"]
+  }
+}

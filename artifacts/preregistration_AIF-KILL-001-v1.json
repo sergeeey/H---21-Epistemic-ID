@@ -1,0 +1,18 @@
+{
+  "claim_id": "AIF-KILL-001-v1",
+  "claim": "A reduced active-inference choice model with an epistemic expected-free-energy term predicts held-out choices better than a complexity-matched Bayes-optimal reward model in conditions selected before confirmatory data collection.",
+  "primary_metric": "held-out log predictive density difference: LPD_AIF - LPD_BRL",
+  "pass": [
+    "LPD_AIF - LPD_BRL > 0 on the preregistered confirmatory set",
+    "AIF outperforms its no-epistemic ablation",
+    "direction replicates in an independent confirmatory sample"
+  ],
+  "fail": [
+    "LPD_AIF - LPD_BRL <= 0 on the primary confirmatory endpoint",
+    "or the no-epistemic ablation performs equally well within the preregistered equivalence margin"
+  ],
+  "unresolved": "Models are empirically non-identifiable under simulation/recovery or fall inside a preregistered equivalence region.",
+  "development_rule": "Search task conditions only on model predictions/simulations, never on confirmatory human data.",
+  "confirmatory_rule": "Freeze task grid, parameter priors, exclusions, scoring function, and model code hashes before opening confirmatory data.",
+  "global_recomposition": "A PASS supports this specific discriminative claim only; it does not establish the universal FEP."
+}

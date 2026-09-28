@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.tmp
+~$*
+.pytest_cache/
+.benchmarks/
+figures_v11/
+outreach/brief_preview/
+*_draft_backup.docx
