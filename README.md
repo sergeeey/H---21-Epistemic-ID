@@ -2,17 +2,19 @@
 
 **A matched-channel experimental design**
 
-Research note · Version 1.1 · 28 September 2026
+Research note · Version 1.1 · 29 September 2026
 
 **Status:** METHOD PROPOSED · SYNTHETICALLY IDENTIFIABLE · HUMAN VALIDATION PENDING
 
-Internal project identifier: `AIF-KILL-001` (not a public title).
-
 Public repository: https://github.com/sergeeey/H---21-Epistemic-ID
 
-This repository ships the **v1 reduced simulation** used to check mutual-information units and to separate an EFE-derived exact-MI controller from a reward-only Bayesian controller. The later adversarial sequence (generic curiosity, structural pair search, matched asymmetric channels, equivalence ceiling) is reported in the preprint. The full v4–v8 search pipeline is **not** in this repository.
+**Contact:** Sergey Boyko · Independent researcher · sergeikuch80@gmail.com
+
+This repository ships the **v1 reduced simulation** used to check mutual-information units and to separate an EFE-derived exact-MI controller from a reward-only Bayesian controller, plus an independent Nelson et al. (2010) Condition 1 recalculation. The later adversarial sequence (generic curiosity, structural pair search, matched asymmetric channels, equivalence ceiling) is **reported in the preprint**. The full v4–v8 search pipeline is **not** packaged for end-to-end public reproduction.
 
 A close human prior-art precedent is Nelson et al. (2010), Experiment 3, Condition 1: same prior, same probability gain, different information gain. Independent recalculation: `python scripts/recompute_nelson_condition1.py`. Design-class novelty of v6 is **not supported**. See [docs/nelson_2010_v6_mapping.md](docs/nelson_2010_v6_mapping.md).
+
+**Ordered next gate:** EXP-002 (Nelson raw / supplementary reanalysis) before any human feasibility pilot.
 
 The FEP-audit file in [docs/sources/](docs/sources/) is a **positioning** source (Motivation / Scope / programme map). It is not evidence for v6. See [docs/research_programme.md](docs/research_programme.md) and [docs/estimand.md](docs/estimand.md).
 
@@ -24,7 +26,7 @@ python scripts/reproduce.py
 
 Requires Python 3.10+ and `numpy`.
 
-The command checks three things:
+The command checks:
 
 1. `I(Z;Y) ≈ 0.4625` nats for `p = 0.64`, `q = 0.95` (a value near `0.953` is bits, not nats).
 2. Action scores and sampling probabilities at the published top v1 condition.

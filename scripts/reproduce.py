@@ -24,7 +24,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "artifacts"))
 
-from aif_kill_test import (  # noqa: E402
+from reduced_aif_v1 import (  # noqa: E402
     Condition,
     action_probabilities,
     binary_entropy,
@@ -57,7 +57,7 @@ def check_mi() -> None:
 
 
 def check_top_condition() -> None:
-    # First row of artifacts/aif_kill_top_conditions.csv
+    # First row of artifacts/reduced_aif_v1_top_conditions.csv
     cond = Condition(p_left=0.64, cue_reliability=0.95, sample_cost=0.40, safe_reward=0.55)
     pa, pb, sa, sb, ig = action_probabilities(cond, beta=8.0, alpha_epi=1.0)
     print("== Top published v1 condition (p=0.64, q=0.95, c=0.40, β=8, α=1) ==")

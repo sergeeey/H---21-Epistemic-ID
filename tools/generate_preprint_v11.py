@@ -339,7 +339,7 @@ def setup_section(doc: Document):
     run3._r.append(fld2)
     for r in (run, run2, run3):
         set_run_font(r, size=8, color=MUTED)
-    fp.add_run("    |    Internal ID: AIF-KILL-001")
+    fp.add_run("    |    Epistemic ID")
     set_run_font(fp.runs[-1], size=8, color=MUTED)
 
 
@@ -479,7 +479,9 @@ def build():
     ident.alignment = WD_ALIGN_PARAGRAPH.CENTER
     ident.paragraph_format.space_after = Pt(14)
     add_bottom_border(ident, color=RULE, sz="12")
-    r = ident.add_run("Internal project identifier: AIF-KILL-001")
+    r = ident.add_run(
+        "Public title: Structural Identifiability of Epistemic Value · matched-channel design"
+    )
     set_run_font(r, size=10, italic=True, color=MUTED)
 
     # Abstract
@@ -1437,7 +1439,7 @@ def build():
             ["Default decision precision", "β = 8"],
             ["Default epistemic weight (v1 grid)", "α_epi = 1"],
             [
-                "v1 search grid (from aif_kill_test.py)",
+                "v1 search grid (from reduced_aif_v1.py)",
                 "p ∈ [0.50, 0.95], q ∈ [0.55, 0.95], c ∈ [0.00, 0.40]",
             ],
             ["Information units", "nats (natural log)"],
@@ -1460,7 +1462,9 @@ def build():
     bullets(
         doc,
         [
-            "aif_kill_test.py",
+            "reduced_aif_v1.py",
+            "reduced_aif_v1_top_conditions.csv",
+            "nelson2010.py",
             "v3_alpha_recovery.csv",
             "v4_equivalence_stats.csv",
             "v5_all_structural_pairs.csv",
@@ -1483,7 +1487,7 @@ def build():
     bullets(
         doc,
         [
-            "Removed AIF-KILL from the public-facing title; retained it only as an internal project identifier.",
+            "Removed AIF-KILL branding from public-facing titles and PDF headers; public name is Epistemic ID / matched-channel design.",
             "Added a formal relation between the reduced score and the expected-free-energy decomposition, with explicit assumptions and an explicit status for α_epi.",
             "Identified Nelson et al. 2010 Experiment 3 Condition 1 as a close human OED precedent; design-class novelty of v6 is not supported.",
             "Added a subsection relating the design to information-theoretic exploration and experimental design.",
@@ -1531,7 +1535,7 @@ def build():
     doc.core_properties.title = "Structural Identifiability of Epistemic Value in Active Inference"
     doc.core_properties.subject = "Version 1.1 research note — METHOD PROPOSED"
     doc.core_properties.comments = (
-        "Version 1.1 outreach revision. Internal ID AIF-KILL-001. "
+        "Version 1.1 outreach revision (Epistemic ID). "
         "No new experimental results. Status: METHOD PROPOSED + SYNTHETICALLY IDENTIFIABLE + HUMAN VALIDATION PENDING."
     )
     doc.save(OUT)

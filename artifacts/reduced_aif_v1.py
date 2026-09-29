@@ -1,7 +1,7 @@
-
 """
-AIF-KILL-001-v1
-Minimal discriminating experiment: Active Inference vs Bayesian reward-maximizing control.
+Epistemic ID — reduced v1 simulation
+Minimal discriminating experiment: reduced EFE-derived exact-MI controller
+vs Bayesian reward-maximizing control.
 
 The task is a one-step hidden-context decision problem.
 
@@ -74,8 +74,7 @@ def commit_values(p: float, r_win: float = 1.0, r_lose: float = 0.0) -> Tuple[fl
 
 
 def sample_instrumental_value(
-    p: float, q: float, cost: float,
-    r_win: float = 1.0, r_lose: float = 0.0
+    p: float, q: float, cost: float, r_win: float = 1.0, r_lose: float = 0.0
 ) -> float:
     """
     Expected reward if the agent samples a cue and then commits optimally.
@@ -116,10 +115,7 @@ class Condition:
     r_lose: float = 0.0
 
 
-def action_scores(
-    cond: Condition,
-    alpha_epi: float = 1.0
-) -> Tuple[np.ndarray, np.ndarray, float]:
+def action_scores(cond: Condition, alpha_epi: float = 1.0) -> Tuple[np.ndarray, np.ndarray, float]:
     """
     Returns:
         scores_aif, scores_brl, information_gain
@@ -137,9 +133,7 @@ def action_scores(
     c = cond.sample_cost
 
     v_l, v_r = commit_values(p, cond.r_win, cond.r_lose)
-    v_sample = sample_instrumental_value(
-        p, q, c, cond.r_win, cond.r_lose
-    )
+    v_sample = sample_instrumental_value(p, q, c, cond.r_win, cond.r_lose)
     ig = mutual_information_state_cue(p, q)
 
     brl = np.array([cond.safe_reward, v_l, v_r, v_sample], dtype=float)
@@ -149,9 +143,7 @@ def action_scores(
 
 
 def action_probabilities(
-    cond: Condition,
-    beta: float = 8.0,
-    alpha_epi: float = 1.0
+    cond: Condition, beta: float = 8.0, alpha_epi: float = 1.0
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, float]:
     aif_scores, brl_scores, ig = action_scores(cond, alpha_epi)
     p_aif = softmax(aif_scores, beta)
@@ -172,9 +164,12 @@ def js_divergence(p: np.ndarray, q: np.ndarray) -> float:
 
 
 def grid_search(
-    p_grid=None, q_grid=None, cost_grid=None,
-    beta: float = 8.0, alpha_epi: float = 1.0,
-    safe_reward: float = 0.55
+    p_grid=None,
+    q_grid=None,
+    cost_grid=None,
+    beta: float = 8.0,
+    alpha_epi: float = 1.0,
+    safe_reward: float = 0.55,
 ) -> List[Dict[str, float]]:
     if p_grid is None:
         p_grid = np.linspace(0.50, 0.95, 46)
@@ -189,30 +184,30 @@ def grid_search(
             for c in cost_grid:
                 cond = Condition(float(p), float(q), float(c), safe_reward=safe_reward)
                 pa, pb, sa, sb, ig = action_probabilities(cond, beta, alpha_epi)
-                rows.append({
-                    "js_divergence": js_divergence(pa, pb),
-                    "prior_p_left": p,
-                    "cue_reliability": q,
-                    "sample_cost": c,
-                    "information_gain_nats": ig,
-                    "P_AIF_SAFE": pa[0],
-                    "P_AIF_COMMIT_L": pa[1],
-                    "P_AIF_COMMIT_R": pa[2],
-                    "P_AIF_SAMPLE": pa[3],
-                    "P_BRL_SAFE": pb[0],
-                    "P_BRL_COMMIT_L": pb[1],
-                    "P_BRL_COMMIT_R": pb[2],
-                    "P_BRL_SAMPLE": pb[3],
-                    "AIF_SAMPLE_SCORE": sa[3],
-                    "BRL_SAMPLE_SCORE": sb[3],
-                })
+                rows.append(
+                    {
+                        "js_divergence": js_divergence(pa, pb),
+                        "prior_p_left": p,
+                        "cue_reliability": q,
+                        "sample_cost": c,
+                        "information_gain_nats": ig,
+                        "P_AIF_SAFE": pa[0],
+                        "P_AIF_COMMIT_L": pa[1],
+                        "P_AIF_COMMIT_R": pa[2],
+                        "P_AIF_SAMPLE": pa[3],
+                        "P_BRL_SAFE": pb[0],
+                        "P_BRL_COMMIT_L": pb[1],
+                        "P_BRL_COMMIT_R": pb[2],
+                        "P_BRL_SAMPLE": pb[3],
+                        "AIF_SAMPLE_SCORE": sa[3],
+                        "BRL_SAMPLE_SCORE": sb[3],
+                    }
+                )
     rows.sort(key=lambda r: r["js_divergence"], reverse=True)
     return rows
 
 
-def simulate_choices(
-    probs: np.ndarray, n: int, rng: np.random.Generator
-) -> np.ndarray:
+def simulate_choices(probs: np.ndarray, n: int, rng: np.random.Generator) -> np.ndarray:
     return rng.choice(len(ACTIONS), size=n, p=probs)
 
 
@@ -221,8 +216,7 @@ def log_predictive_density(choices: np.ndarray, probs: np.ndarray) -> float:
 
 
 def recovery_demo(
-    cond: Condition, n_trials: int = 200, beta: float = 8.0,
-    alpha_epi: float = 1.0, seed: int = 1
+    cond: Condition, n_trials: int = 200, beta: float = 8.0, alpha_epi: float = 1.0, seed: int = 1
 ) -> Dict[str, float]:
     rng = np.random.default_rng(seed)
     pa, pb, _, _, _ = action_probabilities(cond, beta, alpha_epi)
@@ -234,11 +228,11 @@ def recovery_demo(
         "AIF_data_LPD_AIF": log_predictive_density(choices_from_aif, pa),
         "AIF_data_LPD_BRL": log_predictive_density(choices_from_aif, pb),
         "AIF_data_delta": log_predictive_density(choices_from_aif, pa)
-                          - log_predictive_density(choices_from_aif, pb),
+        - log_predictive_density(choices_from_aif, pb),
         "BRL_data_LPD_AIF": log_predictive_density(choices_from_brl, pa),
         "BRL_data_LPD_BRL": log_predictive_density(choices_from_brl, pb),
         "BRL_data_delta": log_predictive_density(choices_from_brl, pa)
-                          - log_predictive_density(choices_from_brl, pb),
+        - log_predictive_density(choices_from_brl, pb),
     }
 
 
@@ -257,19 +251,15 @@ def main():
     ap.add_argument("--alpha-epi", type=float, default=1.0)
     ap.add_argument("--safe-reward", type=float, default=0.55)
     ap.add_argument("--top", type=int, default=20)
-    ap.add_argument("--csv", type=str, default="aif_kill_top_conditions.csv")
+    ap.add_argument("--csv", type=str, default="reduced_aif_v1_top_conditions.csv")
     args = ap.parse_args()
 
-    rows = grid_search(
-        beta=args.beta,
-        alpha_epi=args.alpha_epi,
-        safe_reward=args.safe_reward
-    )
+    rows = grid_search(beta=args.beta, alpha_epi=args.alpha_epi, safe_reward=args.safe_reward)
     write_csv(args.csv, rows, top_n=max(args.top, 100))
 
     print("Top discriminating conditions")
     print("=" * 80)
-    for i, r in enumerate(rows[:args.top], 1):
+    for i, r in enumerate(rows[: args.top], 1):
         print(
             f"{i:2d}. JS={r['js_divergence']:.4f} | "
             f"pL={r['prior_p_left']:.2f} q={r['cue_reliability']:.2f} "
@@ -283,14 +273,11 @@ def main():
         best["prior_p_left"],
         best["cue_reliability"],
         best["sample_cost"],
-        safe_reward=args.safe_reward
+        safe_reward=args.safe_reward,
     )
     print("\nRecovery demo at best condition")
     print("=" * 80)
-    for k, v in recovery_demo(
-        cond, n_trials=200,
-        beta=args.beta, alpha_epi=args.alpha_epi
-    ).items():
+    for k, v in recovery_demo(cond, n_trials=200, beta=args.beta, alpha_epi=args.alpha_epi).items():
         print(f"{k}: {v:.3f}")
 
 

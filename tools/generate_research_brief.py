@@ -148,14 +148,12 @@ def header_footer(canvas, doc):
     canvas.setFont("Times-Italic", 8)
     canvas.setFillColor(colors.HexColor("#666666"))
     canvas.drawString(0.7 * inch, letter[1] - 0.40 * inch, "Research brief  ·  Version 1.1")
-    canvas.drawRightString(
-        letter[0] - 0.7 * inch, letter[1] - 0.40 * inch, "Confidential circulation"
-    )
+    canvas.drawRightString(letter[0] - 0.7 * inch, letter[1] - 0.40 * inch, "Public methods note")
     canvas.line(0.7 * inch, 0.48 * inch, letter[0] - 0.7 * inch, 0.48 * inch)
     canvas.drawCentredString(
         letter[0] / 2,
         0.32 * inch,
-        f"METHOD PROPOSED  ·  page {doc.page} of 2  ·  Internal ID: AIF-KILL-001",
+        f"METHOD PROPOSED  ·  page {doc.page} of 2  ·  Epistemic ID",
     )
     canvas.restoreState()
 
@@ -324,17 +322,19 @@ def build():
     )
 
     story.append(PageBreak())
-    story.append(Paragraph("5. What is needed next: a human feasibility pilot", s["h"]))
+    story.append(Paragraph("5. What is needed next (ordered)", s["h"]))
     story.append(
         Paragraph(
-            "The bottleneck is no longer toy-model separability. It is whether participants can learn "
-            "asymmetric contingencies well enough for the contrast to survive. Three risks cannot be settled "
-            "in simulation: (R1) failure to learn <i>a</i> and <i>b</i>; (R2) between-subject heterogeneity "
-            "that attenuates the contrast; (R3) simple heuristics that reproduce the signature. A pilot should "
-            "estimate learnability, interface comprehension, empirical variance, subjective estimates of "
-            "<i>a</i> and <i>b</i>, sampling-rate floor/ceiling, and candidate heuristics. It is a "
-            "feasibility study, not a confirmatory test. Final N and decision thresholds will be set only "
-            "after hierarchical simulation-based calibration (planned v9; not yet run).",
+            "Because Nelson et al. (2010) already ran a close human OED contrast, the next cheapest "
+            "information source is not a new pilot. Ordered gates: (EXP-002) obtain or reconstruct Nelson "
+            "trial-level / supplementary materials and reanalyse the information-gain vs probability-gain "
+            "contrast under an AIF-framed reading; (then) decide whether an AIF SAMPLE/COMMIT extension "
+            "remains informative; (only then) a small feasibility pilot for learnability of asymmetric "
+            "contingencies (R1–R3). A pilot is a feasibility study, not a confirmatory test. Final N and "
+            "decision thresholds will be set only after hierarchical simulation-based calibration "
+            "(planned v9; not yet run). The public repository currently ships v1 and Nelson checks; the "
+            "broader v4–v8 adversarial sequence is documented in the preprint but is not yet packaged for "
+            "end-to-end public reproduction.",
             s["body"],
         )
     )
@@ -342,11 +342,12 @@ def build():
     box_data = [
         [
             Paragraph(
-                "Ask. I can contribute the design, reduced models, and adversarial comparison pipeline. "
-                "I am looking for a collaborator with human behavioral-experiment infrastructure to "
-                "co-develop a small feasibility pilot and, if warranted, later freeze a preregistered "
-                "confirmatory protocol. The first question is not “is FEP true?” but: "
-                "<b>how do we experimentally distinguish exact information gain from merely generic information-seeking?</b>",
+                "Ask. I can contribute the design, reduced models, mapping to Nelson 2010, and the "
+                "adversarial comparison pipeline. I am looking for critical comments and, where useful, "
+                "help locating Nelson raw/supplementary data or designing the post-EXP-002 feasibility "
+                "gate. Recruitment for a human pilot is <b>not</b> the first ask. The first question is not "
+                "“is FEP true?” but: "
+                "<b>what, if anything, does an AIF framing add beyond the existing OED contrast?</b>",
                 s["box"],
             )
         ]
@@ -374,16 +375,16 @@ def build():
     role_rows = [role_header]
     for left, right in [
         [
-            "Matched-channel task geometry; reduced EFE mapping; adversarial v1–v7 sequence",
-            "Judgment of human learnability and interface for asymmetric cues",
+            "Nelson ↔ v6 mapping; reduced EFE mapping; shipped v1/Nelson reproduction",
+            "Critical comments; pointers to Nelson raw / supplementary materials (EXP-002)",
         ],
         [
-            "Simulation code for the shipped v1 checks; preprint and this brief",
-            "Recruitment, ethics / IRB pathway, and local experimental expertise",
+            "Preprint documenting v4–v8 (not yet end-to-end public pipeline)",
+            "Advice on whether an AIF SAMPLE/COMMIT extension remains informative after reanalysis",
         ],
         [
-            "A planned hierarchical calibration (v9) before any confirmatory N is frozen",
-            "Joint interpretation; later, if warranted, a frozen confirmatory protocol",
+            "Planned hierarchical calibration (v9) before any confirmatory N is frozen",
+            "Only later: feasibility-pilot expertise / ethics pathway if EXP-002 keeps the question open",
         ],
     ]:
         role_rows.append([pcell(left, s["cell"]), pcell(right, s["cell"])])
