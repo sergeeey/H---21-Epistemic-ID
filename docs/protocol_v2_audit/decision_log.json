@@ -11,5 +11,13 @@
   "D-003": {
     "decision": "Rewrite novelty language in brief, preprint, and Wave-1 letters before any send.",
     "date": "2026-09-28"
+  },
+  "D-004": {
+    "decision": "Ambiguity gate on a new (a,b) search: exact-MI sampling contrast survives when H(Y|Z) is matched within 0.005 nats. Preprint Table 3 is not reproduced by this search.",
+    "date": "2026-10-01"
+  },
+  "D-005": {
+    "decision": "EXP-002 not started. Nelson 2010 has a supplement PDF; the paper says additional data are available from the first author. No public trial-level reanalysis set was retrieved.",
+    "date": "2026-10-01"
   }
 }

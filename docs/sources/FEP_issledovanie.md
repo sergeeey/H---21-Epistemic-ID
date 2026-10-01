@@ -1,7 +1,11 @@
 <!--
-Positioning source only. Do not treat this file as evidence for v6, as a replacement
-for the Nelson 2010 prior-art finding, or as a hierarchical v9 result.
-Used for preprint Motivation, Scope, rival architecture, and research-programme map.
+POSITIONING ARCHIVE ONLY — not evidence for v6.
+
+This Russian-language file is a retained strategic/positioning source used for
+Motivation, Scope, rival architecture, and research-programme map in the English
+preprint. Do not treat it as empirical support for matched-channel claims, as a
+replacement for Nelson et al. (2010), or as a hierarchical v9 result.
+Local/internal path references inside the text are historical and not public deliverables.
 -->
 
 # Исследование: FEP / Active Inference как кандидат на фундаментальный прорыв

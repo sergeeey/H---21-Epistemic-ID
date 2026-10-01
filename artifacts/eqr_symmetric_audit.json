@@ -1,0 +1,545 @@
+{
+  "probe_algebra": "symmetric cue only: P(Y=Z)=q; actions SAFE/COMMIT_L/COMMIT_R/SAMPLE",
+  "n_probes": 27,
+  "observable": "full 4-action softmax policy on every probe",
+  "distance": "max absolute probability difference over probes and actions",
+  "n_raw_hypotheses": 19,
+  "n_exact_classes_eps_1e-8": 18,
+  "quotient_compression_exact": 1.0555555555555556,
+  "exact_classes": [
+    {
+      "size": 2,
+      "members": [
+        "exact_mi_a1_b8",
+        "exact_mi_a1_b8_copy"
+      ],
+      "families": [
+        "exact_mi",
+        "exact_mi_rename"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "instr_b8"
+      ],
+      "families": [
+        "instrumental"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a0.25_b8"
+      ],
+      "families": [
+        "exact_mi"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a0.5_b8"
+      ],
+      "families": [
+        "exact_mi"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a2_b8"
+      ],
+      "families": [
+        "exact_mi"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a4_b8"
+      ],
+      "families": [
+        "exact_mi"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a1_b2"
+      ],
+      "families": [
+        "exact_mi_beta"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a1_b4"
+      ],
+      "families": [
+        "exact_mi_beta"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "exact_mi_a1_b16"
+      ],
+      "families": [
+        "exact_mi_beta"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k0.5_g1_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k0.5_g2_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k0.5_g4_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k1_g1_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k1_g2_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k1_g4_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k2_g1_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k2_g2_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    },
+    {
+      "size": 1,
+      "members": [
+        "cur_k2_g4_b8"
+      ],
+      "families": [
+        "curiosity"
+      ]
+    }
+  ],
+  "single_linkage_not_equivalence": {
+    "0.02": {
+      "n_classes": 18,
+      "qc": 1.0555555555555556,
+      "classes": [
+        {
+          "size": 2,
+          "members": [
+            "exact_mi_a1_b8",
+            "exact_mi_a1_b8_copy"
+          ],
+          "families": [
+            "exact_mi",
+            "exact_mi_rename"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "instr_b8"
+          ],
+          "families": [
+            "instrumental"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a0.25_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a0.5_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a2_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a4_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b2"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b4"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b16"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        }
+      ]
+    },
+    "0.05": {
+      "n_classes": 18,
+      "qc": 1.0555555555555556,
+      "classes": [
+        {
+          "size": 2,
+          "members": [
+            "exact_mi_a1_b8",
+            "exact_mi_a1_b8_copy"
+          ],
+          "families": [
+            "exact_mi",
+            "exact_mi_rename"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "instr_b8"
+          ],
+          "families": [
+            "instrumental"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a0.25_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a0.5_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a2_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a4_b8"
+          ],
+          "families": [
+            "exact_mi"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b2"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b4"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "exact_mi_a1_b16"
+          ],
+          "families": [
+            "exact_mi_beta"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k0.5_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k1_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g1_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g2_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        },
+        {
+          "size": 1,
+          "members": [
+            "cur_k2_g4_b8"
+          ],
+          "families": [
+            "curiosity"
+          ]
+        }
+      ]
+    }
+  },
+  "note": "Tolerance clustering is single-linkage and is not a mathematical equivalence relation. Exact classes use eps=1e-8. Asymmetric v6 probes are outside this audit.",
+  "closest_cross_family": {
+    "max_abs_delta_p": 0.058286558849635184,
+    "a": "exact_mi_a0.5_b8",
+    "b": "cur_k0.5_g2_b8",
+    "family_a": "exact_mi",
+    "family_b": "curiosity"
+  },
+  "curiosity_family_profile_vs_exact_mi": {
+    "definition": "For each probe separately, minimize max|dP| over (kappa, gamma). This is class-level overlap, not one hypothesis.",
+    "worst_probe": {
+      "p": 0.8,
+      "q": 0.95,
+      "c": 0.4,
+      "min_max_abs_delta_p": 0.005502982437710746,
+      "kappa": 0.75,
+      "gamma": 1.0
+    },
+    "n_probes_below_0.02": 27,
+    "n_probes": 27
+  },
+  "best_fixed_curiosity_vs_exact_mi_a1_b8": {
+    "max_abs_delta_p": 0.0699038447774134,
+    "kappa": 0.75,
+    "gamma": 2.0,
+    "beta": 8.0,
+    "interpretation": "One (kappa, gamma) pair scored on every probe. This is not the preprint v4 grid search and does not certify v4."
+  }
+}

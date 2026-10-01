@@ -12,11 +12,11 @@ Suggested subject:
 
 Hello,
 
-I would like to share a methods note on the structural identifiability of epistemic value, and to ask whether it is a useful discussion item for the Institute’s research / community channels (and, if appropriate, a short presentation).
+I would like to share a methods note on the structural identifiability of epistemic value, and to ask whether it is a useful discussion item for the Institute’s research / community channels (and, if appropriate, a short presentation). I am not arguing against Active Inference; I am trying to give information-seeking claims a contrast they can fail.
 
 The note argues that generic information-seeking is not unique to Active Inference. In simulations reported in the preprint, a flexible curiosity model can nearly reproduce an exact-information-gain controller on ordinary symmetric-cue tasks, and a matched asymmetric-channel design restores discrimination against that tested family. That design class already has a human OED precedent in Nelson et al. (2010); the remaining question is what AIF adds beyond it. An equivalence result forbids reading a later behavioral success as unique validation of AIF or FEP. The reduced model is an EFE-derived epistemic-value component under stated assumptions, not a test of the entire framework.
 
-The public repository currently reproduces the shipped v1 and Nelson checks; the broader v4–v8 adversarial sequence is documented in the preprint but is not yet packaged for end-to-end public reproduction.
+The public repository currently reproduces the shipped v1 and Nelson checks; the broader v4–v8 adversarial sequence is documented in the preprint but is not yet packaged for end-to-end public reproduction. The probability-gain rival that won in Nelson's data is likewise not yet implemented in the comparison set.
 
 I am **not** asking the Institute to recruit participants. The ordered scientific gate before any pilot is EXP-002 (Nelson raw / supplementary reanalysis). I am looking for:
 

@@ -1459,27 +1459,31 @@ def build():
     )
 
     heading(doc, "Appendix D. Reproducibility artifacts and current state", 1)
+    para(
+        doc,
+        "Publicly shipped and reproducible in this repository:",
+        first_indent=False,
+    )
     bullets(
         doc,
         [
-            "reduced_aif_v1.py",
-            "reduced_aif_v1_top_conditions.csv",
-            "nelson2010.py",
-            "v3_alpha_recovery.csv",
-            "v4_equivalence_stats.csv",
-            "v5_all_structural_pairs.csv",
-            "v6_selected_channel_pairs.csv",
-            "v6_structural_checks.csv",
-            "v6_family_recovery.csv",
-            "v7_equivalence_summary.csv",
-            "v8_preregistration_protocol.json",
-            "state_checkpoint_v8.json",
+            "artifacts/reduced_aif_v1.py — v1 symmetric-cue reduced controller and grid",
+            "artifacts/reduced_aif_v1_top_conditions.csv — v1 grid output used by scripts/reproduce.py",
+            "artifacts/nelson2010.py and tests/test_nelson2010.py — independent Nelson 2010 E3C1 recalculation",
+            "scripts/reproduce.py — one-command check of the shipped v1 and Nelson invariants",
+            "scripts/recompute_nelson_condition1.py — standalone Nelson Condition 1 printer",
         ],
     )
     para(
         doc,
-        "These artifacts support the synthetic claims reported here. Independent reimplementation has not yet "
-        "been completed and remains a required gate before a confirmatory human study.",
+        "Not currently available as versioned public artifacts: the v3–v8 result files "
+        "(for example former working names such as v4_equivalence_stats.csv, v5_all_structural_pairs.csv, "
+        "v6_selected_channel_pairs.csv, v6_family_recovery.csv, v7_equivalence_summary.csv) were not "
+        "preserved in this repository. The v3–v8 numbers reported in the main text therefore rest on the "
+        "narrative of this note alone and must be treated as UNVERIFIED pending a public re-run. "
+        "Releasing that pipeline as executable code plus versioned outputs is a required gate before any "
+        "confirmatory human study. Independent reimplementation of the shipped v1/Nelson checks is already "
+        "possible via python scripts/reproduce.py.",
         first_indent=False,
     )
 

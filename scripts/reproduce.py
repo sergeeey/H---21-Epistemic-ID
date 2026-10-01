@@ -19,6 +19,10 @@ import math
 import sys
 from pathlib import Path
 
+# Default Windows consoles (cp1251/cp1252) cannot print Greek letters.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,7 +64,7 @@ def check_top_condition() -> None:
     # First row of artifacts/reduced_aif_v1_top_conditions.csv
     cond = Condition(p_left=0.64, cue_reliability=0.95, sample_cost=0.40, safe_reward=0.55)
     pa, pb, sa, sb, ig = action_probabilities(cond, beta=8.0, alpha_epi=1.0)
-    print("== Top published v1 condition (p=0.64, q=0.95, c=0.40, β=8, α=1) ==")
+    print("== Top published v1 condition (p=0.64, q=0.95, c=0.40, beta=8, alpha=1) ==")
     print(f"I(Z;Y)              = {ig:.6f}")
     print(f"AIF SAMPLE score    = {sa[3]:.6f}   expected ~ 1.0125")
     print(f"BRL SAMPLE score    = {sb[3]:.6f}   expected ~ 0.5500")
@@ -70,7 +74,10 @@ def check_top_condition() -> None:
     assert almost(sb[3], 0.55, 5e-4)
     assert almost(float(pa[3]), 0.925154, 5e-4)
     assert almost(float(pb[3]), 0.234020, 5e-4)
-    print("PASS: recomputed scores match the published top-condition CSV.\n")
+    # By construction on SAMPLE: AIF score = BRL score + alpha_epi * I(Z;Y).
+    assert almost(sa[3], sb[3] + 1.0 * ig, 1e-9)
+    print("PASS: recomputed scores match the published top-condition CSV.")
+    print("NOTE: AIF SAMPLE score = BRL SAMPLE score + alpha*I by construction.\n")
 
 
 def check_compact_grid() -> None:
@@ -90,6 +97,10 @@ def check_compact_grid() -> None:
         f"c={best['sample_cost']:.2f} | "
         f"Psample AIF={best['P_AIF_SAMPLE']:.3f} BRL={best['P_BRL_SAMPLE']:.3f}"
     )
+    if almost(best["cue_reliability"], 0.95, 1e-12) and almost(best["sample_cost"], 0.40, 1e-12):
+        print(
+            "NOTE: best cell sits on the upper grid boundary (q=0.95, c=0.40), not an interior optimum."
+        )
     print("Top 5 compact-grid conditions:")
     for i, r in enumerate(rows[:5], 1):
         print(
@@ -97,10 +108,23 @@ def check_compact_grid() -> None:
             f"p={r['prior_p_left']:.2f} q={r['cue_reliability']:.2f} "
             f"c={r['sample_cost']:.2f}"
         )
+    # Identity check under alpha>0 and I>0 (cannot fail by construction for this rival).
     assert best["P_AIF_SAMPLE"] > best["P_BRL_SAMPLE"]
-    print(
-        "PASS: reduced exact-MI controller samples more than reward-only control in the top cell.\n"
+    # Non-tautological check: BRL sampling is invariant to alpha; AIF sampling rises with alpha.
+    cond = Condition(
+        p_left=float(best["prior_p_left"]),
+        cue_reliability=float(best["cue_reliability"]),
+        sample_cost=float(best["sample_cost"]),
+        safe_reward=0.55,
     )
+    p_brl_lo = float(action_probabilities(cond, beta=8.0, alpha_epi=0.0)[1][3])
+    p_brl_hi = float(action_probabilities(cond, beta=8.0, alpha_epi=2.0)[1][3])
+    p_aif_lo = float(action_probabilities(cond, beta=8.0, alpha_epi=0.0)[0][3])
+    p_aif_hi = float(action_probabilities(cond, beta=8.0, alpha_epi=2.0)[0][3])
+    assert almost(p_brl_lo, p_brl_hi, 1e-12)
+    assert p_aif_hi > p_aif_lo
+    print("PASS: identity check AIF>BRL under alpha*I on SAMPLE (expected by construction).")
+    print("PASS: BRL P(SAMPLE) invariant to alpha; AIF P(SAMPLE) increases with alpha.\n")
 
 
 def main() -> None:

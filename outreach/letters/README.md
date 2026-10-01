@@ -1,8 +1,8 @@
 # Wave 1 letters
 
-Drafts only. **Do not send** until the send-gate below is green.
+Drafts only. **Do not send** until the remaining open gates below are green (especially immutable cite + matched-channel code).
 
-Public URLs:
+Public URLs (mutable `main` until tagged):
 
 - Repo: https://github.com/sergeeey/H---21-Epistemic-ID
 - Brief: https://github.com/sergeeey/H---21-Epistemic-ID/blob/main/outreach/Structural_Identifiability_Matched_Channel_Research_Brief_v1.1.pdf
@@ -19,14 +19,21 @@ Signature used in drafts: Sergey Boyko · Independent researcher · sergeikuch80
 ## Send-gate
 
 ```text
-[ ] signatures complete
-[ ] brief regenerated without Confidential/KILL
-[ ] README has contact
-[ ] subject lines neutralized
-[ ] asks aligned with EXP-002-first strategy
-[ ] public-code scope stated honestly
-[ ] all PDFs regenerated
-[ ] all links rechecked
+[x] signatures complete
+[x] brief regenerated without Confidential/KILL
+[x] README has contact
+[x] subject lines neutralized
+[x] asks aligned with EXP-002-first strategy
+[x] public-code scope stated honestly in letters
+[x] Appendix D no longer claims phantom v3–v8 files
+[x] reproduce.py exits 0 on default Windows console (ASCII + UTF-8 reconfigure)
+[x] identity vs alpha-monotonicity checks separated in reproduce.py
+[x] pytest listed in requirements.txt
+[ ] immutable cite (git tag + preferably Zenodo/arXiv) used in letter URLs
+[ ] matched-channel (a,b) invariants shipped in public code OR explicitly deferred
+[ ] ambiguity-term limitation stated in preprint as open issue
+[ ] all links rechecked after last commit
+[ ] 24h cooling-off after READY
 ```
 
 Do not send CCNP and Daw letters in the same week as these.

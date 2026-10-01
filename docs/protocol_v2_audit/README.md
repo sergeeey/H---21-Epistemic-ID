@@ -1,6 +1,6 @@
 # Protocol v2.0 audit bundle
 
-Independent check of the ChatGPT protocol-v2 audit against the paper and a local recalculation.
+Independent structural check of Nelson et al. (2010) Experiment 3 Condition 1 against the v6 matched-channel proposal, plus a local recalculation.
 
 - Mapping: [../nelson_2010_v6_mapping.md](../nelson_2010_v6_mapping.md)
 - Recalculation: `python scripts/recompute_nelson_condition1.py`
